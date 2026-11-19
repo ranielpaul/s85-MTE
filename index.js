@@ -29,8 +29,8 @@ app.use("/users", userRoutes);
 
 
 if(require.main === module){
-	app.listen(process.env.PORT || 4000, () => {
-	    console.log(`API is now online on port ${ process.env.PORT || 4000 }`)
+	app.listen(port, () => {
+	    console.log(`API is now online on port ${port}`)
 	});
 }
 

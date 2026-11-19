@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-require('dotenv').config();
 
 JWT_SECRET_KEY = "WorkoutKey"
 

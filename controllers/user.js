@@ -19,8 +19,7 @@ module.exports.registerUser = (req, res) => {
 
         return newUser.save()
         .then((result) => res.status(201).send({
-            message: 'User registered successfully',
-            user: result
+            message: 'Registered Successfully',
         }))
         .catch(error => errorHandler(error, req, res));
     }
@@ -44,7 +43,6 @@ module.exports.loginUser = (req, res) => {
                 if (isPasswordCorrect) {
 
                     return res.status(200).send({ 
-                        message: 'User logged in successfully',
                         access : auth.createAccessToken(result)
                     })
 
@@ -72,7 +70,6 @@ module.exports.getProfile = (req,res) => {
 
         } else {
 
-            user.password = "";
             return res.status(200).send(user);
         }  
     })
