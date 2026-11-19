@@ -1,6 +1,11 @@
 const jwt = require('jsonwebtoken');
+require('dotenv').config();
 
-JWT_SECRET_KEY = "WorkoutKey"
+const JWT_SECRET_KEY = process.env.JWT_SECRET_KEY;
+
+if (!JWT_SECRET_KEY) {
+    throw new Error('JWT_SECRET_KEY is required. Set it in your .env file.');
+}
 
 module.exports.createAccessToken = (user) => {
     const data = {

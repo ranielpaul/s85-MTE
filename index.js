@@ -1,8 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+require("dotenv").config();
 
-// Port Number
-const port = 4000;
+const port = process.env.PORT || 4000;
+const mongoUri = process.env.MONGODB_URI;
+
+if (!mongoUri) {
+	throw new Error("MONGODB_URI is required. Set it in your .env file.");
+}
 
 // Server
 const app = express();
@@ -12,7 +17,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended:true}));
 
 // MongoDB connection:
-mongoose.connect("mongodb+srv://admin:admin1234@b645-miranda.9rsgnb9.mongodb.net/InventoryManagementSystem")
+mongoose.connect(mongoUri)
 
 // Monitor the status of the db connection:
 db = mongoose.connection;
